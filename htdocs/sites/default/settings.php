@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * Drupal site-specific configuration file.
@@ -51,7 +50,6 @@
  * @see example.sites.php
  * @see conf_path()
  */
-
 /**
  * Database settings:
  *
@@ -212,7 +210,6 @@
  *   );
  * @endcode
  */
-
 /*
  * Read MySQL service properties from _ENV['VCAP_SERVICES']
  */
@@ -238,18 +235,17 @@ foreach($service_blob as $service_provider => $service_list) {
         }
     }
 }
-
 // Configure Drupal, using the first database found
 $databases['default']['default'] = array(
     'driver' => 'mysql',
     'database' => $mysql_services[0]['credentials']['name'],
     'username' => $mysql_services[0]['credentials']['username'],
     'password' => $mysql_services[0]['credentials']['password'],
-    'host' => $mysql_services[0]['credentials']['hostname'],
-    'prefix' => 'drupal_',
+    'host'     => $mysql_services[0]['credentials']['hostname'],
+    'port'     => $mysql_services[0]['credentials']['port'],
+    'prefix'   => 'drupal_',
     'collation' => 'utf8_general_ci',
 );
-
 /**
  * Access control for update.php script.
  *
@@ -262,7 +258,6 @@ $databases['default']['default'] = array(
  * TRUE back to a FALSE!
  */
 $update_free_access = FALSE;
-
 /**
  * Salt for one-time login links and cancel links, form tokens, etc.
  *
@@ -280,8 +275,7 @@ $update_free_access = FALSE;
  *   $drupal_hash_salt = file_get_contents('/home/example/salt.txt');
  *
  */
-$drupal_hash_salt = 'my unique salt - you should really change this';
-
+$drupal_hash_salt = 'wo8478btncow374b6tc34p89tv34;qreunv23853ytnpv23944ty4pv89n5y6m39';
 /**
  * Base URL (optional).
  *
@@ -303,7 +297,6 @@ $drupal_hash_salt = 'my unique salt - you should really change this';
  * for you.
  */
 # $base_url = 'http://www.example.com';  // NO trailing slash!
-
 /**
  * PHP settings:
  *
@@ -314,7 +307,6 @@ $drupal_hash_salt = 'my unique salt - you should really change this';
  * runtime settings and the .htaccess file for non-runtime settings. Settings
  * defined there should not be duplicated here so as to avoid conflict issues.
  */
-
 /**
  * Some distributions of Linux (most notably Debian) ship their PHP
  * installations with garbage collection (gc) disabled. Since Drupal depends on
@@ -323,7 +315,6 @@ $drupal_hash_salt = 'my unique salt - you should really change this';
  */
 ini_set('session.gc_probability', 1);
 ini_set('session.gc_divisor', 100);
-
 /**
  * Set session lifetime (in seconds), i.e. the time from the user's last visit
  * to the active session may be deleted by the session garbage collector. When
@@ -331,14 +322,12 @@ ini_set('session.gc_divisor', 100);
  * of the user's $_SESSION variable is discarded.
  */
 ini_set('session.gc_maxlifetime', 200000);
-
 /**
  * Set session cookie lifetime (in seconds), i.e. the time from the session is
  * created to the cookie expires, i.e. when the browser is expected to discard
  * the cookie. The value 0 means "until the browser is closed".
  */
 ini_set('session.cookie_lifetime', 2000000);
-
 /**
  * If you encounter a situation where users post a large amount of text, and
  * the result is stripped out upon viewing but can still be edited, Drupal's
@@ -349,7 +338,6 @@ ini_set('session.cookie_lifetime', 2000000);
  */
 # ini_set('pcre.backtrack_limit', 200000);
 # ini_set('pcre.recursion_limit', 200000);
-
 /**
  * Drupal automatically generates a unique session cookie name for each site
  * based on its full domain name. If you have multiple domains pointing at the
@@ -360,7 +348,6 @@ ini_set('session.cookie_lifetime', 2000000);
  * with a leading dot, as per RFC 2109.
  */
 # $cookie_domain = '.example.com';
-
 /**
  * Variable overrides:
  *
@@ -381,7 +368,6 @@ ini_set('session.cookie_lifetime', 2000000);
 # $conf['site_name'] = 'My Drupal site';
 # $conf['theme_default'] = 'garland';
 # $conf['anonymous'] = 'Visitor';
-
 /**
  * A custom theme can be set for the offline page. This applies when the site
  * is explicitly set to maintenance mode through the administration page or when
@@ -391,7 +377,6 @@ ini_set('session.cookie_lifetime', 2000000);
  * Note: This setting does not apply to installation and update pages.
  */
 # $conf['maintenance_theme'] = 'bartik';
-
 /**
  * Reverse Proxy Configuration:
  *
@@ -424,19 +409,16 @@ ini_set('session.cookie_lifetime', 2000000);
  * address spoofing unless more advanced precautions are taken.
  */
 # $conf['reverse_proxy'] = TRUE;
-
 /**
  * Specify every reverse proxy IP address in your environment.
  * This setting is required if $conf['reverse_proxy'] is TRUE.
  */
 # $conf['reverse_proxy_addresses'] = array('a.b.c.d', ...);
-
 /**
  * Set this value if your proxy server sends the client IP in a header
  * other than X-Forwarded-For.
  */
 # $conf['reverse_proxy_header'] = 'HTTP_X_CLUSTER_CLIENT_IP';
-
 /**
  * Page caching:
  *
@@ -454,7 +436,6 @@ ini_set('session.cookie_lifetime', 2000000);
  * getting cached pages from the proxy.
  */
 # $conf['omit_vary_cookie'] = TRUE;
-
 /**
  * CSS/JS aggregated file gzip compression:
  *
@@ -469,7 +450,6 @@ ini_set('session.cookie_lifetime', 2000000);
  */
 # $conf['css_gzip_compression'] = FALSE;
 # $conf['js_gzip_compression'] = FALSE;
-
 /**
  * Block caching:
  *
@@ -481,7 +461,6 @@ ini_set('session.cookie_lifetime', 2000000);
  * below.
  */
 # $conf['block_cache_bypass_node_grants'] = TRUE;
-
 /**
  * String overrides:
  *
@@ -495,7 +474,6 @@ ini_set('session.cookie_lifetime', 2000000);
 #   'forum'      => 'Discussion board',
 #   '@count min' => '@count minutes',
 # );
-
 /**
  *
  * IP blocking:
@@ -518,7 +496,6 @@ ini_set('session.cookie_lifetime', 2000000);
 # $conf['blocked_ips'] = array(
 #   'a.b.c.d',
 # );
-
 /**
  * Fast 404 pages:
  *
@@ -538,10 +515,9 @@ ini_set('session.cookie_lifetime', 2000000);
  *
  * Add leading hash signs if you would like to disable this functionality.
  */
-$conf['404_fast_paths_exclude'] = '/\/(?:styles)\//';
+$conf['404_fast_paths_exclude'] = '/\/(?:styles)|(?:system\/files)\//';
 $conf['404_fast_paths'] = '/\.(?:txt|png|gif|jpe?g|css|js|ico|swf|flv|cgi|bat|pl|dll|exe|asp)$/i';
 $conf['404_fast_html'] = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>404 Not Found</title></head><body><h1>Not Found</h1><p>The requested URL "@path" was not found on this server.</p></body></html>';
-
 /**
  * By default the page request process will return a fast 404 page for missing
  * files if they match the regular expression set in '404_fast_paths' and not
@@ -559,7 +535,6 @@ $conf['404_fast_html'] = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN"
  * uncommenting the line below.
  */
 # drupal_fast_404();
-
 /**
  * External access proxy settings:
  *
@@ -577,7 +552,6 @@ $conf['404_fast_html'] = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN"
 # $conf['proxy_password'] = '';
 # $conf['proxy_user_agent'] = '';
 # $conf['proxy_exceptions'] = array('127.0.0.1', 'localhost');
-
 /**
  * Authorized file system operations:
  *
