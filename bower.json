@@ -1,0 +1,6 @@
+{
+  "name": "TastyTest",
+  "dependencies": {
+    "bootstrap": "*"
+  }
+}

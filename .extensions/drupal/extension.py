@@ -46,13 +46,13 @@ def compile(install):
     (install.builder
         .move()
         .everything()
-        .under('{BUILD_DIR}/htdocs')
+        .under('{BUILD_DIR}/web')
         .into(workDir)
         .done())
     (install.builder
         .move()
         .everything()
         .under(workDir)
-        .into('{BUILD_DIR}/htdocs')
+        .into('{BUILD_DIR}/web')
         .done())
     return 0
