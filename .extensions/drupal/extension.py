@@ -46,13 +46,13 @@ def compile(install):
     (install.builder
         .move()
         .everything()
-        .under('{BUILD_DIR}/web')
+        .under('{BUILD_DIR}/drupal_project')
         .into(workDir)
         .done())
     (install.builder
         .move()
         .everything()
         .under(workDir)
-        .into('{BUILD_DIR}/web')
+        .into('{BUILD_DIR}/drupal_project')
         .done())
     return 0
